@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "reachEstimationCount"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Interest {
+public class InterestTargeting {
     private String id;
     private String name;
     private Boolean canBeTargeted;
@@ -52,7 +52,7 @@ public class Interest {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Interest{");
+        final StringBuffer sb = new StringBuffer("InterestTargeting{");
         sb.append("id='").append(id).append('\'');
         sb.append(", name='").append(name).append('\'');
         sb.append(", canBeTargeted=").append(canBeTargeted);

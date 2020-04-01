@@ -7,7 +7,7 @@ import com.xy1m.internal.config.SerializationConfig;
 import com.xy1m.internal.serialization.SerializationMapperCreator;
 import com.xy1m.model.ResultsInterest;
 import com.xy1m.model.auth.Authentication;
-import com.xy1m.model.resource.Interest;
+import com.xy1m.model.resource.InterestTargeting;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -30,14 +30,14 @@ public class InterestServiceImplTest {
     @Test
     @Ignore
     public void search() throws JsonProcessingException {
-        ResultsInterest<Interest> interests = amplify.getInterestService().search(auth, "Credit", 6);
+        ResultsInterest<InterestTargeting> interests = amplify.getInterestService().search(auth, "Credit", 6);
         System.out.println(objectMapper.writeValueAsString(interests));
     }
 
     @Test
     @Ignore
     public void getAll() throws JsonProcessingException {
-        ResultsInterest<Interest> interests = amplify.getInterestService().getAll(auth);
+        ResultsInterest<InterestTargeting> interests = amplify.getInterestService().getAll(auth);
         System.out.println(objectMapper.writeValueAsString(interests));
     }
 }

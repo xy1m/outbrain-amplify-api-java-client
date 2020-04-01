@@ -4,7 +4,7 @@ import com.xy1m.exceptions.APIException;
 import com.xy1m.internal.InterestEndpoint;
 import com.xy1m.model.ResultsInterest;
 import com.xy1m.model.auth.Authentication;
-import com.xy1m.model.resource.Interest;
+import com.xy1m.model.resource.InterestTargeting;
 
 public class InterestServiceImpl implements InterestService {
 
@@ -17,13 +17,13 @@ public class InterestServiceImpl implements InterestService {
     }
 
     @Override
-    public ResultsInterest<Interest> search(Authentication auth, String term, Integer limit) throws APIException {
+    public ResultsInterest<InterestTargeting> search(Authentication auth, String term, Integer limit) throws APIException {
         String accessToken = auth.getToken().getAccessToken();
         return endpoint.search(accessToken, term, limit);
     }
 
     @Override
-    public ResultsInterest<Interest> getAll(Authentication auth) throws APIException {
+    public ResultsInterest<InterestTargeting> getAll(Authentication auth) throws APIException {
         String accessToken = auth.getToken().getAccessToken();
         return endpoint.getAll(accessToken);
     }

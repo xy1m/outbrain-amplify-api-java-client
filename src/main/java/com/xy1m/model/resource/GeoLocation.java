@@ -3,6 +3,7 @@ package com.xy1m.model.resource;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.xy1m.model.reference.types.GeoLocationType;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -13,12 +14,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "parent"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Geo {
+public class GeoLocation {
     private String id;
-    private GeoType geoType;
+    private GeoLocationType geoType;
     private String name;
     private String canonicalName;
-    private Geo parent;
+    private GeoLocation parent;
 
     public String getId() {
         return id;
@@ -28,11 +29,11 @@ public class Geo {
         this.id = id;
     }
 
-    public GeoType getGeoType() {
+    public GeoLocationType getGeoType() {
         return geoType;
     }
 
-    public void setGeoType(GeoType geoType) {
+    public void setGeoType(GeoLocationType geoType) {
         this.geoType = geoType;
     }
 
@@ -52,17 +53,17 @@ public class Geo {
         this.canonicalName = canonicalName;
     }
 
-    public Geo getParent() {
+    public GeoLocation getParent() {
         return parent;
     }
 
-    public void setParent(Geo parent) {
+    public void setParent(GeoLocation parent) {
         this.parent = parent;
     }
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Geo{");
+        final StringBuffer sb = new StringBuffer("GeoLocation{");
         sb.append("id='").append(id).append('\'');
         sb.append(", geoType=").append(geoType);
         sb.append(", name='").append(name).append('\'');
