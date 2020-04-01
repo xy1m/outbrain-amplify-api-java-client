@@ -5,6 +5,8 @@ import com.xy1m.model.resource.Enabled;
 import com.xy1m.model.resource.PromotedLink;
 import com.xy1m.model.resource.PromotedLinkResponse;
 import com.xy1m.model.resource.PromotedLinks;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -35,9 +37,9 @@ public interface PromotedLinkEndpoint {
 
     @PUT(Paths.API_PATH_PREFIX + "/promotedLinks/{ids}")
     @Headers("Content-Type: application/json")
-    void updateStatus(@Header("OB-TOKEN-V1") String accessToken,
-                      @Path("ids") List<String> promotedLinkIds,
-                      @Body Enabled enabled);
+    ResponseBody updateStatus(@Header("OB-TOKEN-V1") String accessToken,
+                              @Path("ids") String promotedLinkIds,
+                              @Body Enabled enabled);
 
     @PUT(Paths.API_PATH_PREFIX + "/campaigns/{campaignId}/promotedLinks")
     @Headers("Content-Type: application/json")

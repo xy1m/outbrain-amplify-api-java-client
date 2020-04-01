@@ -17,7 +17,7 @@ public interface PromotedLinkService {
 
     PromotedLinks getByCampaign(Authentication auth, String campaignId, Map<String, String> params);
 
-    void updateStatus(Authentication auth, List<String> promotedLinks, Boolean enabled);
+    boolean updateStatus(Authentication auth, List<String> promotedLinks, Boolean enabled);
 
     List<PromotedLinkResponse> updateAll(Authentication auth, String campaignId,
                                          List<PromotedLink> promotedLinks);

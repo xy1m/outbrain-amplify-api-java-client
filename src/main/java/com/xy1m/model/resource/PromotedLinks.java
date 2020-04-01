@@ -2,6 +2,7 @@ package com.xy1m.model.resource;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class PromotedLinks {
     private Integer count;
     private Integer totalCount;
 
+    @JsonProperty("promotedLinks")
     public List<PromotedLink> getPromotedLinks() {
         return promotedLinks;
     }
@@ -26,6 +28,7 @@ public class PromotedLinks {
         this.promotedLinks = promotedLinks;
     }
 
+    @JsonProperty("count")
     public Integer getCount() {
         return count;
     }
@@ -34,6 +37,7 @@ public class PromotedLinks {
         this.count = count;
     }
 
+    @JsonProperty("totalCount")
     public Integer getTotalCount() {
         return totalCount;
     }

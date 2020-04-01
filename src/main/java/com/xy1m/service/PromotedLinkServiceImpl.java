@@ -1,5 +1,6 @@
 package com.xy1m.service;
 
+import com.google.common.base.Joiner;
 import com.xy1m.exceptions.APIException;
 import com.xy1m.internal.PromotedLinkEndpoint;
 import com.xy1m.model.auth.Authentication;
@@ -7,11 +8,14 @@ import com.xy1m.model.resource.Enabled;
 import com.xy1m.model.resource.PromotedLink;
 import com.xy1m.model.resource.PromotedLinkResponse;
 import com.xy1m.model.resource.PromotedLinks;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 import java.util.List;
 import java.util.Map;
 
 public class PromotedLinkServiceImpl implements PromotedLinkService{
+    public static final int HTTP_OK = 200;
     private final Boolean performValidations;
     private final PromotedLinkEndpoint endpoint;
 
@@ -40,9 +44,11 @@ public class PromotedLinkServiceImpl implements PromotedLinkService{
     }
 
     @Override
-    public void updateStatus(Authentication auth, List<String> promotedLinks, Boolean enabled) {
+    public boolean updateStatus(Authentication auth, List<String> promotedLinks, Boolean enabled) {
         String accessToken = auth.getToken().getAccessToken();
-        endpoint.updateStatus(accessToken, promotedLinks, new Enabled(enabled));
+        ResponseBody responseBody = endpoint.updateStatus(accessToken, Joiner.on(",").join(promotedLinks)
+                , new Enabled(enabled));
+        return responseBody != null;
     }
 
     @Override
