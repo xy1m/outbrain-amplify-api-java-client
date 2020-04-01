@@ -17,7 +17,7 @@ import static org.apache.logging.log4j.util.Strings.isNotBlank;
 public class CampaignServiceImpl implements CampaignService {
     private final Set<String> extraFieldSet = Sets.newHashSet("CustomAudience", "Locations", "InterestsTargeting",
             "BidBySections",
-            "BlockedSites", "PlatformTargeting", "CampaignOptimization", "Scheduling");
+            "CampaignBlockedSites", "PlatformTargeting", "CampaignOptimization", "Scheduling");
     private final Boolean performValidations;
     private final CampaignEndpoint endpoint;
 

@@ -3,46 +3,117 @@ package com.xy1m.model.campaign;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.xy1m.annotations.ReadOnly;
+import com.xy1m.model.budget.Budget;
+import com.xy1m.model.reference.objects.Bids;
+import com.xy1m.model.reference.objects.CampaignBlockedSites;
+import com.xy1m.model.reference.objects.CampaignOnAirSchedulingRules;
+import com.xy1m.model.reference.objects.LiveStatus;
+import com.xy1m.model.reference.objects.CampaignOptimization;
+import com.xy1m.model.reference.types.PreixTrackingCode;
+import com.xy1m.model.reference.types.SuffixTrackingCode;
+import com.xy1m.model.reference.objects.Targeting;
+import com.xy1m.model.reference.objects.TrackingPixel;
+import com.xy1m.model.reference.types.ContentType;
+import com.xy1m.model.reference.types.CampaignObjective;
+import com.xy1m.model.reference.types.CampaignOnAirType;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "id",
+        "name",
+        "marketerId",
+        "enabled",
+        "cpc",
+        "minimumCpc",
+        "currency",
+        "autoArchived",
+        "targeting",
+        "feeds",
+        "autoExpirationOfPromotedLinks",
+        "contentType",
+        "budget",
+        "budgetId",
+        "suffixTrackingCode",
+        "lastModified",
+        "creationTime",
+        "liveStatus",
+        "cpcPerAdEnabled",
+        "campaignBlockedSites",
+        "startHour",
+        "trackingPixels",
+        "bids",
+        "campaignOptimization",
+        "onAirType",
+        "scheduling",
+        "objective",
+})
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Campaign {
+    @JsonProperty("id")
     private String id;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("marketerId")
     private String marketerId;
+    @JsonProperty("enabled")
     private Boolean enabled;
+    @JsonProperty("cpc")
     private BigDecimal cpc;
+    @JsonProperty("minimumCpc")
     @ReadOnly
     private BigDecimal minimumCpc;
+    @JsonProperty("currency")
     @ReadOnly
-    private String currenty;
+    private String currency;
+    @JsonProperty("autoArchived")
     private Boolean autoArchived;
+    @JsonProperty("targeting")
     private Targeting targeting;
+    @JsonProperty("feeds")
     private List<String> feeds;
-    private Integer autoExpireationOfPromotedLinks;
+    @JsonProperty("autoExpirationOfPromotedLinks")
+    private Integer autoExpirationOfPromotedLinks;
+    @JsonProperty("contentType")
     private ContentType contentType;
+    @JsonProperty("budget")
     @ReadOnly
     private Budget budget;
     @JsonProperty("budgetId")
     private String budgetId;
+    @JsonProperty("suffixTrackingCode")
     private SuffixTrackingCode suffixTrackingCode;
+    @JsonProperty("preixTrackingCode")
     private PreixTrackingCode preixTrackingCode;
-    private String lastModified;
-    private String creationTime;
+    @JsonProperty("lastModified")
+    private LocalDateTime lastModified;
+    @JsonProperty("creationTime")
+    private LocalDateTime creationTime;
+    @JsonProperty("liveStatus")
     private LiveStatus liveStatus;
+    @JsonProperty("cpcPerAdEnabled")
     private Boolean cpcPerAdEnabled;
-    private BlockedSites campaignBlockedSites;
+    @JsonProperty("campaignBlockedSites")
+    private CampaignBlockedSites campaignBlockedSites;
+    @JsonProperty("startHour")
     private String startHour;
+    @JsonProperty("trackingPixels")
     private List<TrackingPixel> trackingPixels;
-    private List<Bid> bids;
-    private Optimization campaignOptimization;
-    private OnAirType onAirType;
-    private SchedulingRules scheduling;
-    private Objective objective;
+    @JsonProperty("bids")
+    private Bids bids;
+    @JsonProperty("campaignOptimization")
+    private CampaignOptimization campaignOptimization;
+    @JsonProperty("onAirType")
+    private CampaignOnAirType onAirType;
+    @JsonProperty("scheduling")
+    private CampaignOnAirSchedulingRules scheduling;
+    @JsonProperty("objective")
+    private CampaignObjective objective;
 
     public String getId() {
         return id;
@@ -92,12 +163,12 @@ public class Campaign {
         this.minimumCpc = minimumCpc;
     }
 
-    public String getCurrenty() {
-        return currenty;
+    public String getCurrency() {
+        return currency;
     }
 
-    public void setCurrenty(String currenty) {
-        this.currenty = currenty;
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
     public Boolean getAutoArchived() {
@@ -124,12 +195,12 @@ public class Campaign {
         this.feeds = feeds;
     }
 
-    public Integer getAutoExpireationOfPromotedLinks() {
-        return autoExpireationOfPromotedLinks;
+    public Integer getAutoExpirationOfPromotedLinks() {
+        return autoExpirationOfPromotedLinks;
     }
 
-    public void setAutoExpireationOfPromotedLinks(Integer autoExpireationOfPromotedLinks) {
-        this.autoExpireationOfPromotedLinks = autoExpireationOfPromotedLinks;
+    public void setAutoExpirationOfPromotedLinks(Integer autoExpirationOfPromotedLinks) {
+        this.autoExpirationOfPromotedLinks = autoExpirationOfPromotedLinks;
     }
 
     public ContentType getContentType() {
@@ -156,7 +227,6 @@ public class Campaign {
         this.budgetId = budgetId;
     }
 
-
     public SuffixTrackingCode getSuffixTrackingCode() {
         return suffixTrackingCode;
     }
@@ -173,19 +243,19 @@ public class Campaign {
         this.preixTrackingCode = preixTrackingCode;
     }
 
-    public String getLastModified() {
+    public LocalDateTime getLastModified() {
         return lastModified;
     }
 
-    public void setLastModified(String lastModified) {
+    public void setLastModified(LocalDateTime lastModified) {
         this.lastModified = lastModified;
     }
 
-    public String getCreationTime() {
+    public LocalDateTime getCreationTime() {
         return creationTime;
     }
 
-    public void setCreationTime(String creationTime) {
+    public void setCreationTime(LocalDateTime creationTime) {
         this.creationTime = creationTime;
     }
 
@@ -205,11 +275,11 @@ public class Campaign {
         this.cpcPerAdEnabled = cpcPerAdEnabled;
     }
 
-    public BlockedSites getCampaignBlockedSites() {
+    public CampaignBlockedSites getCampaignBlockedSites() {
         return campaignBlockedSites;
     }
 
-    public void setCampaignBlockedSites(BlockedSites campaignBlockedSites) {
+    public void setCampaignBlockedSites(CampaignBlockedSites campaignBlockedSites) {
         this.campaignBlockedSites = campaignBlockedSites;
     }
 
@@ -229,43 +299,43 @@ public class Campaign {
         this.trackingPixels = trackingPixels;
     }
 
-    public List<Bid> getBids() {
+    public Bids getBids() {
         return bids;
     }
 
-    public void setBids(List<Bid> bids) {
+    public void setBids(Bids bids) {
         this.bids = bids;
     }
 
-    public Optimization getCampaignOptimization() {
+    public CampaignOptimization getCampaignOptimization() {
         return campaignOptimization;
     }
 
-    public void setCampaignOptimization(Optimization campaignOptimization) {
+    public void setCampaignOptimization(CampaignOptimization campaignOptimization) {
         this.campaignOptimization = campaignOptimization;
     }
 
-    public OnAirType getOnAirType() {
+    public CampaignOnAirType getOnAirType() {
         return onAirType;
     }
 
-    public void setOnAirType(OnAirType onAirType) {
+    public void setOnAirType(CampaignOnAirType onAirType) {
         this.onAirType = onAirType;
     }
 
-    public SchedulingRules getScheduling() {
+    public CampaignOnAirSchedulingRules getScheduling() {
         return scheduling;
     }
 
-    public void setScheduling(SchedulingRules scheduling) {
+    public void setScheduling(CampaignOnAirSchedulingRules scheduling) {
         this.scheduling = scheduling;
     }
 
-    public Objective getObjective() {
+    public CampaignObjective getObjective() {
         return objective;
     }
 
-    public void setObjective(Objective objective) {
+    public void setObjective(CampaignObjective objective) {
         this.objective = objective;
     }
 
@@ -278,18 +348,18 @@ public class Campaign {
         sb.append(", enabled=").append(enabled);
         sb.append(", cpc=").append(cpc);
         sb.append(", minimumCpc=").append(minimumCpc);
-        sb.append(", currenty='").append(currenty).append('\'');
+        sb.append(", currency='").append(currency).append('\'');
         sb.append(", autoArchived=").append(autoArchived);
         sb.append(", targeting=").append(targeting);
         sb.append(", feeds=").append(feeds);
-        sb.append(", autoExpireationOfPromotedLinks=").append(autoExpireationOfPromotedLinks);
+        sb.append(", autoExpirationOfPromotedLinks=").append(autoExpirationOfPromotedLinks);
         sb.append(", contentType=").append(contentType);
         sb.append(", budget=").append(budget);
         sb.append(", budgetId='").append(budgetId).append('\'');
         sb.append(", suffixTrackingCode=").append(suffixTrackingCode);
         sb.append(", preixTrackingCode=").append(preixTrackingCode);
-        sb.append(", lastModified='").append(lastModified).append('\'');
-        sb.append(", creationTime='").append(creationTime).append('\'');
+        sb.append(", lastModified=").append(lastModified);
+        sb.append(", creationTime=").append(creationTime);
         sb.append(", liveStatus=").append(liveStatus);
         sb.append(", cpcPerAdEnabled=").append(cpcPerAdEnabled);
         sb.append(", campaignBlockedSites=").append(campaignBlockedSites);

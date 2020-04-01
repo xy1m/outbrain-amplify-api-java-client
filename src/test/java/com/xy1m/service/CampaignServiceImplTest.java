@@ -6,9 +6,9 @@ import com.xy1m.internal.config.SerializationConfig;
 import com.xy1m.internal.serialization.SerializationMapperCreator;
 import com.xy1m.model.auth.Authentication;
 import com.xy1m.model.campaign.Campaign;
-import com.xy1m.model.campaign.Objective;
-import com.xy1m.model.campaign.Targeting;
-import com.xy1m.model.reference.Platform;
+import com.xy1m.model.reference.types.CampaignObjective;
+import com.xy1m.model.reference.objects.Targeting;
+import com.xy1m.model.reference.types.Platform;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -53,7 +53,7 @@ public class CampaignServiceImplTest {
     @Ignore
     public void create() {
         Campaign payload = new Campaign();
-        payload.setObjective(Objective.Traffic);
+        payload.setObjective(CampaignObjective.Traffic);
         payload.setName("George Test Campaign via SDK");
         payload.setEnabled(false);
         payload.setBudgetId("00a4903f01e6d848e7cf34b3f42dbc199b");

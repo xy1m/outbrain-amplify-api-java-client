@@ -6,7 +6,7 @@ import com.xy1m.Amplify;
 import com.xy1m.internal.config.SerializationConfig;
 import com.xy1m.internal.serialization.SerializationMapperCreator;
 import com.xy1m.model.auth.Authentication;
-import com.xy1m.model.resource.Geo;
+import com.xy1m.model.resource.GeoLocation;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -32,7 +32,7 @@ public class GeoServiceImplTest {
     @Test
     @Ignore
     public void search() throws JsonProcessingException {
-        List<Geo> geos = amplify.getGeoService().search(auth, "United", 6);
+        List<GeoLocation> geos = amplify.getGeoService().search(auth, "United", 6);
         System.out.println(objectMapper.writeValueAsString(geos));
     }
 }
