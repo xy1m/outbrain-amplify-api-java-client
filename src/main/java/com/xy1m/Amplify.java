@@ -1,6 +1,7 @@
 package com.xy1m;
 
 import com.xy1m.internal.AuthenticationEndpoint;
+import com.xy1m.internal.CampaignEndpoint;
 import com.xy1m.internal.CommunicationFactory;
 import com.xy1m.internal.GeoEndpoint;
 import com.xy1m.internal.InterestEndpoint;
@@ -10,6 +11,8 @@ import com.xy1m.internal.factories.AmplifyEndpointsFactory;
 import com.xy1m.internal.factories.AmplifyEndpointsRetrofitFactory;
 import com.xy1m.service.AuthenticationService;
 import com.xy1m.service.AuthenticationServiceImpl;
+import com.xy1m.service.CampaignService;
+import com.xy1m.service.CampaignServiceImpl;
 import com.xy1m.service.GeoService;
 import com.xy1m.service.GeoServiceImpl;
 import com.xy1m.service.InterestService;
@@ -20,13 +23,16 @@ public class Amplify {
     private final AuthenticationService authenticationService;
     private final GeoService geoService;
     private final InterestService interestService;
+    private final CampaignService campaignService;
 
     private Amplify(AuthenticationService authenticationService,
                     GeoService geoService,
-                    InterestService interestService) {
+                    InterestService interestService,
+                    CampaignService campaignService) {
         this.authenticationService = authenticationService;
         this.geoService = geoService;
         this.interestService = interestService;
+        this.campaignService = campaignService;
     }
 
     public AuthenticationService getAuthenticationService() {
@@ -39,6 +45,10 @@ public class Amplify {
 
     public InterestService getInterestService() {
         return interestService;
+    }
+
+    public CampaignService getCampaignService() {
+        return campaignService;
     }
 
     public static Amplify getInstance() {
@@ -143,7 +153,9 @@ public class Amplify {
                     new GeoServiceImpl(performClientValidations,
                             endpointsFactory.createAuthEndpoint(GeoEndpoint.class)) {},
                     new InterestServiceImpl(performClientValidations,
-                            endpointsFactory.createAuthEndpoint(InterestEndpoint.class)) {}
+                            endpointsFactory.createAuthEndpoint(InterestEndpoint.class)) {},
+                    new CampaignServiceImpl(performClientValidations,
+                            endpointsFactory.createAuthEndpoint(CampaignEndpoint.class)) {}
             );
         }
     }
