@@ -4,6 +4,7 @@ import com.xy1m.internal.AuthenticationEndpoint;
 import com.xy1m.internal.CommunicationFactory;
 import com.xy1m.internal.GeoEndpoint;
 import com.xy1m.internal.InterestEndpoint;
+import com.xy1m.internal.PromotedLinkEndpoint;
 import com.xy1m.internal.config.CommunicationConfig;
 import com.xy1m.internal.config.SerializationConfig;
 import com.xy1m.internal.factories.AmplifyEndpointsFactory;
@@ -14,19 +15,24 @@ import com.xy1m.service.GeoService;
 import com.xy1m.service.GeoServiceImpl;
 import com.xy1m.service.InterestService;
 import com.xy1m.service.InterestServiceImpl;
+import com.xy1m.service.PromotedLinkService;
+import com.xy1m.service.PromotedLinkServiceImpl;
 
 public class Amplify {
     private static Amplify instance = Amplify.builder().build();
     private final AuthenticationService authenticationService;
     private final GeoService geoService;
     private final InterestService interestService;
+    private final PromotedLinkService promotedLinkService;
 
     private Amplify(AuthenticationService authenticationService,
                     GeoService geoService,
-                    InterestService interestService) {
+                    InterestService interestService,
+                    PromotedLinkService promotedLinkService) {
         this.authenticationService = authenticationService;
         this.geoService = geoService;
         this.interestService = interestService;
+        this.promotedLinkService = promotedLinkService;
     }
 
     public AuthenticationService getAuthenticationService() {
@@ -39,6 +45,10 @@ public class Amplify {
 
     public InterestService getInterestService() {
         return interestService;
+    }
+
+    public PromotedLinkService getPromotedLinkService() {
+        return promotedLinkService;
     }
 
     public static Amplify getInstance() {
@@ -143,7 +153,9 @@ public class Amplify {
                     new GeoServiceImpl(performClientValidations,
                             endpointsFactory.createAuthEndpoint(GeoEndpoint.class)) {},
                     new InterestServiceImpl(performClientValidations,
-                            endpointsFactory.createAuthEndpoint(InterestEndpoint.class)) {}
+                            endpointsFactory.createAuthEndpoint(InterestEndpoint.class)) {},
+                    new PromotedLinkServiceImpl(performClientValidations,
+                            endpointsFactory.createAuthEndpoint(PromotedLinkEndpoint.class)) {}
             );
         }
     }

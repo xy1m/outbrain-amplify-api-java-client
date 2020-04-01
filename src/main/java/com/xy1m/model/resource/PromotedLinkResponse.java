@@ -39,4 +39,13 @@ public class PromotedLinkResponse {
     public void setPromotedLink(PromotedLink promotedLink) {
         this.promotedLink = promotedLink;
     }
+
+    @Override
+    public String toString() {
+        return "PromotedLinkResponse{" +
+                "operationStatus=" + operationStatus +
+                ", url='" + url + '\'' +
+                ", promotedLink=" + promotedLink +
+                '}';
+    }
 }

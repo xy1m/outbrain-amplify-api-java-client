@@ -41,4 +41,13 @@ public class PromotedLinks {
     public void setTotalCount(Integer totalCount) {
         this.totalCount = totalCount;
     }
+
+    @Override
+    public String toString() {
+        return "PromotedLinks{" +
+                "promotedLinks=" + promotedLinks +
+                ", count=" + count +
+                ", totalCount=" + totalCount +
+                '}';
+    }
 }

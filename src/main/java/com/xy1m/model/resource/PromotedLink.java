@@ -2,11 +2,10 @@ package com.xy1m.model.resource;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -24,7 +23,7 @@ import java.util.List;
     "archived",
     "documentLanguage",
     "baseUrl",
-    "documentID",
+    "documentId",
     "onAirStatus",
     "cpcAdjustment"
 })
@@ -33,8 +32,8 @@ public class PromotedLink {
     private String id;
     private String campaignId;
     private String text;
-    private LocalDateTime lastModified;
-    private LocalDateTime creationTime;
+    private String lastModified;
+    private String creationTime;
     private String url;
     private String sectionName;
     private ApprovalStatus approvalStatus;
@@ -44,10 +43,11 @@ public class PromotedLink {
     private Boolean archived;
     private String documentLanguage;
     private String baseUrl;
-    private String documentID;
+    private String documentId;
     private OnAirStatus onAirStatus;
     private BigDecimal cpcAdjustment;
 
+    @JsonProperty("id")
     public String getId() {
         return id;
     }
@@ -56,6 +56,7 @@ public class PromotedLink {
         this.id = id;
     }
 
+    @JsonProperty("campaignId")
     public String getCampaignId() {
         return campaignId;
     }
@@ -64,6 +65,7 @@ public class PromotedLink {
         this.campaignId = campaignId;
     }
 
+    @JsonProperty("text")
     public String getText() {
         return text;
     }
@@ -72,22 +74,25 @@ public class PromotedLink {
         this.text = text;
     }
 
-    public LocalDateTime getLastModified() {
+    @JsonProperty("lastModified")
+    public String getLastModified() {
         return lastModified;
     }
 
-    public void setLastModified(LocalDateTime lastModified) {
+    public void setLastModified(String lastModified) {
         this.lastModified = lastModified;
     }
 
-    public LocalDateTime getCreationTime() {
+    @JsonProperty("creationTime")
+    public String getCreationTime() {
         return creationTime;
     }
 
-    public void setCreationTime(LocalDateTime creationTime) {
+    public void setCreationTime(String creationTime) {
         this.creationTime = creationTime;
     }
 
+    @JsonProperty("url")
     public String getUrl() {
         return url;
     }
@@ -96,6 +101,7 @@ public class PromotedLink {
         this.url = url;
     }
 
+    @JsonProperty("sectionName")
     public String getSectionName() {
         return sectionName;
     }
@@ -104,6 +110,7 @@ public class PromotedLink {
         this.sectionName = sectionName;
     }
 
+    @JsonProperty("approvalStatus")
     public ApprovalStatus getApprovalStatus() {
         return approvalStatus;
     }
@@ -112,6 +119,7 @@ public class PromotedLink {
         this.approvalStatus = approvalStatus;
     }
 
+    @JsonProperty("imageUrl")
     public String getImageUrl() {
         return imageUrl;
     }
@@ -120,6 +128,7 @@ public class PromotedLink {
         this.imageUrl = imageUrl;
     }
 
+    @JsonProperty("cachedImageUrl")
     public String getCachedImageUrl() {
         return cachedImageUrl;
     }
@@ -128,6 +137,7 @@ public class PromotedLink {
         this.cachedImageUrl = cachedImageUrl;
     }
 
+    @JsonProperty("enabled")
     public Boolean getEnabled() {
         return enabled;
     }
@@ -136,6 +146,7 @@ public class PromotedLink {
         this.enabled = enabled;
     }
 
+    @JsonProperty("archived")
     public Boolean getArchived() {
         return archived;
     }
@@ -144,6 +155,7 @@ public class PromotedLink {
         this.archived = archived;
     }
 
+    @JsonProperty("documentLanguage")
     public String getDocumentLanguage() {
         return documentLanguage;
     }
@@ -152,6 +164,7 @@ public class PromotedLink {
         this.documentLanguage = documentLanguage;
     }
 
+    @JsonProperty("baseUrl")
     public String getBaseUrl() {
         return baseUrl;
     }
@@ -160,14 +173,16 @@ public class PromotedLink {
         this.baseUrl = baseUrl;
     }
 
-    public String getDocumentID() {
-        return documentID;
+    @JsonProperty("documentId")
+    public String getDocumentId() {
+        return documentId;
     }
 
-    public void setDocumentID(String documentID) {
-        this.documentID = documentID;
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
     }
 
+    @JsonProperty("onAirStatus")
     public OnAirStatus getOnAirStatus() {
         return onAirStatus;
     }
@@ -176,6 +191,7 @@ public class PromotedLink {
         this.onAirStatus = onAirStatus;
     }
 
+    @JsonProperty("cpcAdjustment")
     public BigDecimal getCpcAdjustment() {
         return cpcAdjustment;
     }
@@ -184,57 +200,26 @@ public class PromotedLink {
         this.cpcAdjustment = cpcAdjustment;
     }
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonPropertyOrder({
-            "status",
-            "reasons",
-            "isEditable"
-    })
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class ApprovalStatus {
-        private ApprovalReviewStatus status;
-        private List<String> reasons;
-        private Boolean isEditable;
-
-        public ApprovalReviewStatus getStatus() {
-            return status;
-        }
-
-        public void setStatus(ApprovalReviewStatus status) {
-            this.status = status;
-        }
-
-        public List<String> getReasons() {
-            return reasons;
-        }
-
-        public void setReasons(List<String> reasons) {
-            this.reasons = reasons;
-        }
-
-        public Boolean getEditable() {
-            return isEditable;
-        }
-
-        public void setEditable(Boolean editable) {
-            isEditable = editable;
-        }
-    }
-
-    public enum ApprovalReviewStatus {
-        Approved,
-        Pending,
-        Rejected
-    }
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonPropertyOrder({
-            "onAir",
-            "reason"
-    })
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class OnAirStatus {
-        private Boolean onAir;
-        private String reason;
+    @Override
+    public String toString() {
+        return "PromotedLink{" +
+                "id='" + id + '\'' +
+                ", campaignId='" + campaignId + '\'' +
+                ", text='" + text + '\'' +
+                ", lastModified=" + lastModified +
+                ", creationTime=" + creationTime +
+                ", url='" + url + '\'' +
+                ", sectionName='" + sectionName + '\'' +
+                ", approvalStatus=" + approvalStatus +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", cachedImageUrl='" + cachedImageUrl + '\'' +
+                ", enabled=" + enabled +
+                ", archived=" + archived +
+                ", documentLanguage='" + documentLanguage + '\'' +
+                ", baseUrl='" + baseUrl + '\'' +
+                ", documentId='" + documentId + '\'' +
+                ", onAirStatus=" + onAirStatus +
+                ", cpcAdjustment=" + cpcAdjustment +
+                '}';
     }
 }
