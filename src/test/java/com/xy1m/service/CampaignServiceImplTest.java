@@ -6,8 +6,8 @@ import com.xy1m.internal.config.SerializationConfig;
 import com.xy1m.internal.serialization.SerializationMapperCreator;
 import com.xy1m.model.auth.Authentication;
 import com.xy1m.model.campaign.Campaign;
-import com.xy1m.model.reference.types.CampaignObjective;
 import com.xy1m.model.reference.objects.Targeting;
+import com.xy1m.model.reference.types.CampaignObjective;
 import com.xy1m.model.reference.types.Platform;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -34,7 +34,7 @@ public class CampaignServiceImplTest {
     @Test
     @Ignore
     public void get() {
-        Campaign campaign = amplify.getCampaignService().get(auth, "003e2ab0ce0abe32a3f576b8e4b85c855f");
+        Campaign campaign = amplify.getCampaignService().get(auth, "003e2ab0ce0abe32a3f576b8e4b85c855f", null);
         System.out.println(campaign);
     }
 
@@ -45,7 +45,7 @@ public class CampaignServiceImplTest {
         payload.setId("00c63c1885fecc9dfa6a5bdbe9ac692de5");
         payload.setEnabled(false);
         payload.setName("George Test Campaign via SDK update");
-        Campaign result = amplify.getCampaignService().update(auth, payload);
+        Campaign result = amplify.getCampaignService().update(auth, payload, null);
         System.out.println(result);
     }
 
@@ -62,7 +62,7 @@ public class CampaignServiceImplTest {
         Targeting targeting = new Targeting();
         targeting.setPlatform(Arrays.asList(Platform.DESKTOP));
         payload.setTargeting(targeting);
-        Campaign result = amplify.getCampaignService().create(auth, payload);
+        Campaign result = amplify.getCampaignService().create(auth, payload, null);
         System.out.println(result);
     }
 }
