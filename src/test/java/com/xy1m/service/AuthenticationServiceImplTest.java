@@ -19,8 +19,8 @@ public class AuthenticationServiceImplTest {
     @Test
     @Ignore
     public void generateAuthentication() {
-        String username = "***";
-        String password = "***";
+        String username = "inPowered";
+        String password = "inPowered101!";
         auth = amplify.getAuthenticationService().generateAuthentication(username, password);
         System.out.println(auth.getToken().getAccessToken());
     }

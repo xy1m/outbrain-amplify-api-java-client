@@ -5,6 +5,7 @@ import com.xy1m.internal.CampaignEndpoint;
 import com.xy1m.internal.CommunicationFactory;
 import com.xy1m.internal.GeoEndpoint;
 import com.xy1m.internal.InterestEndpoint;
+import com.xy1m.internal.PromotedLinkEndpoint;
 import com.xy1m.internal.config.CommunicationConfig;
 import com.xy1m.internal.config.SerializationConfig;
 import com.xy1m.internal.factories.AmplifyEndpointsFactory;
@@ -17,6 +18,8 @@ import com.xy1m.service.GeoService;
 import com.xy1m.service.GeoServiceImpl;
 import com.xy1m.service.InterestService;
 import com.xy1m.service.InterestServiceImpl;
+import com.xy1m.service.PromotedLinkService;
+import com.xy1m.service.PromotedLinkServiceImpl;
 
 public class Amplify {
     private static Amplify instance = Amplify.builder().build();
@@ -24,15 +27,18 @@ public class Amplify {
     private final GeoService geoService;
     private final InterestService interestService;
     private final CampaignService campaignService;
+    private final PromotedLinkService promotedLinkService;
 
     private Amplify(AuthenticationService authenticationService,
                     GeoService geoService,
                     InterestService interestService,
-                    CampaignService campaignService) {
+                    CampaignService campaignService,
+                    PromotedLinkService promotedLinkService) {
         this.authenticationService = authenticationService;
         this.geoService = geoService;
         this.interestService = interestService;
         this.campaignService = campaignService;
+        this.promotedLinkService = promotedLinkService;
     }
 
     public AuthenticationService getAuthenticationService() {
@@ -49,6 +55,10 @@ public class Amplify {
 
     public CampaignService getCampaignService() {
         return campaignService;
+    }
+
+    public PromotedLinkService getPromotedLinkService() {
+        return promotedLinkService;
     }
 
     public static Amplify getInstance() {
@@ -155,7 +165,9 @@ public class Amplify {
                     new InterestServiceImpl(performClientValidations,
                             endpointsFactory.createAuthEndpoint(InterestEndpoint.class)) {},
                     new CampaignServiceImpl(performClientValidations,
-                            endpointsFactory.createAuthEndpoint(CampaignEndpoint.class)) {}
+                            endpointsFactory.createAuthEndpoint(CampaignEndpoint.class)) {},
+                    new PromotedLinkServiceImpl(performClientValidations,
+                            endpointsFactory.createAuthEndpoint(PromotedLinkEndpoint.class)) {}
             );
         }
     }
