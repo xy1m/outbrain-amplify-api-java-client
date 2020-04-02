@@ -30,7 +30,7 @@ public class GeoServiceImplTest {
     }
 
     @Test
-    //@Ignore
+    @Ignore
     public void search() throws JsonProcessingException {
         List<GeoLocation> geos = amplify.getGeoService().search(auth, "United", 6);
         System.out.println(objectMapper.writeValueAsString(geos));

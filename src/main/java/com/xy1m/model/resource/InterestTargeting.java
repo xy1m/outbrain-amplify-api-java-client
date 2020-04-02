@@ -5,12 +5,15 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import java.util.List;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "id",
         "name",
         "canBeTargeted",
-        "reachEstimationCount"
+        "reachEstimationCount",
+        "subConcepts"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class InterestTargeting {
@@ -22,6 +25,8 @@ public class InterestTargeting {
     private Boolean canBeTargeted;
     @JsonProperty("reachEstimationCount")
     private Long reachEstimationCount;
+    @JsonProperty("subConcepts")
+    private List<InterestTargeting> subConcepts;
 
     public String getId() {
         return id;
@@ -55,6 +60,14 @@ public class InterestTargeting {
         this.reachEstimationCount = reachEstimationCount;
     }
 
+    public List<InterestTargeting> getSubConcepts() {
+        return subConcepts;
+    }
+
+    public void setSubConcepts(List<InterestTargeting> subConcepts) {
+        this.subConcepts = subConcepts;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("InterestTargeting{");
@@ -62,6 +75,7 @@ public class InterestTargeting {
         sb.append(", name='").append(name).append('\'');
         sb.append(", canBeTargeted=").append(canBeTargeted);
         sb.append(", reachEstimationCount=").append(reachEstimationCount);
+        sb.append(", subConcepts=").append(subConcepts);
         sb.append('}');
         return sb.toString();
     }
