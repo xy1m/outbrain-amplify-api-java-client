@@ -1,7 +1,7 @@
 package com.xy1m.amplify.internal;
 
 import com.xy1m.amplify.exceptions.APIException;
-import com.xy1m.amplify.model.resource.Enabled;
+import com.xy1m.amplify.model.reference.objects.Enabled;
 import com.xy1m.amplify.model.resource.PromotedLink;
 import com.xy1m.amplify.model.resource.PromotedLinks;
 import com.xy1m.amplify.model.resource.PromotedLinkResponse;
