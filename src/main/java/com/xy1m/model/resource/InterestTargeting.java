@@ -2,6 +2,7 @@ package com.xy1m.model.resource;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -13,9 +14,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class InterestTargeting {
+    @JsonProperty("id")
     private String id;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("canBeTargeted")
     private Boolean canBeTargeted;
+    @JsonProperty("reachEstimationCount")
     private Long reachEstimationCount;
 
     public String getId() {
