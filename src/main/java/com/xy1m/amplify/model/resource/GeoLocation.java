@@ -11,7 +11,8 @@ import com.xy1m.amplify.model.reference.types.GeoLocationType;
         "id",
         "geoType",
         "name",
-        "cannonicalName",
+        "canonicalName",
+        "code",
         "parent"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -24,8 +25,11 @@ public class GeoLocation {
     private String name;
     @JsonProperty("canonicalName")
     private String canonicalName;
+    @JsonProperty("code")
+    private String code;
     @JsonProperty("parent")
     private GeoLocation parent;
+
 
     public String getId() {
         return id;
@@ -59,6 +63,14 @@ public class GeoLocation {
         this.canonicalName = canonicalName;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public GeoLocation getParent() {
         return parent;
     }
@@ -74,6 +86,7 @@ public class GeoLocation {
         sb.append(", geoType=").append(geoType);
         sb.append(", name='").append(name).append('\'');
         sb.append(", canonicalName='").append(canonicalName).append('\'');
+        sb.append(", code='").append(code).append('\'');
         sb.append(", parent=").append(parent);
         sb.append('}');
         return sb.toString();
