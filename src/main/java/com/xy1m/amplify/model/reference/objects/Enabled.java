@@ -1,4 +1,4 @@
-package com.xy1m.amplify.model.resource;
+package com.xy1m.amplify.model.reference.objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
